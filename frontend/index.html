@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Phoenix Business Suite</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <span class="brand-mark">P</span>
+        <div><b>Phoenix</b><small>BUSINESS SUITE</small></div>
+      </div>
+      <div class="company-switch">
+        <small>ACTIVE COMPANY</small>
+        <select id="companySelect" class="form-select form-select-sm"><option value="">Select company</option></select>
+      </div>
+      <nav id="navigation">
+        <div class="nav-label">WORKSPACE</div>
+        <a class="nav-link active" data-page="dashboard">▦ &nbsp; Dashboard</a>
+        <div class="nav-label">CUSTOMER RELATIONSHIP</div>
+        <a class="nav-link" data-page="leads">♙ &nbsp; Leads</a>
+        <a class="nav-link" data-page="contacts">♧ &nbsp; Contacts</a>
+        <a class="nav-link" data-page="deals">◇ &nbsp; Deals Pipeline</a>
+        <a class="nav-link" data-page="activities">✓ &nbsp; Activities & Tasks</a>
+        <div class="nav-label">BUSINESS OPERATIONS</div>
+        <a class="nav-link" data-page="orders">▤ &nbsp; Orders</a>
+        <a class="nav-link" data-page="dispatch">⇧ &nbsp; Dispatch</a>
+        <a class="nav-link" data-page="transport">▣ &nbsp; Transport</a>
+        <a class="nav-link" data-page="purchase">＋ &nbsp; Purchase</a>
+        <a class="nav-link" data-page="stock">▥ &nbsp; Stock</a>
+        <a class="nav-link" data-page="invoices">▧ &nbsp; Invoices</a>
+        <a class="nav-link" data-page="payments">₹ &nbsp; Payments</a>
+        <a class="nav-link" data-page="ledger">≋ &nbsp; Ledger</a>
+        <a class="nav-link" data-page="expenses">↗ &nbsp; Expenses</a>
+        <div class="nav-label">MASTERS & REPORTS</div>
+        <a class="nav-link" data-page="parties">♙ &nbsp; Party Master</a>
+        <a class="nav-link" data-page="products">◇ &nbsp; Product Master</a>
+        <a class="nav-link" data-page="team">♧ &nbsp; Sales Team</a>
+        <a class="nav-link" data-page="reports">▥ &nbsp; Reports</a>
+        <a class="nav-link" data-page="custom">▦ &nbsp; Custom Sections</a>
+        <div class="nav-label">ADMINISTRATION</div>
+        <a class="nav-link" data-page="settings">⚙ &nbsp; Settings & Users</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <span class="status-dot"></span> System ready
+        <button id="logoutBtn" class="btn btn-sm btn-outline-secondary ms-auto">Logout</button>
+      </div>
+    </aside>
+    <main class="main-area">
+      <header class="topbar">
+        <button class="btn btn-light d-lg-none" id="menuBtn">☰</button>
+        <div><div class="page-eyebrow">BUSINESS MANAGEMENT</div><h1 id="pageTitle">Dashboard</h1></div>
+        <div class="top-actions"><span class="date-chip" id="today"></span><div class="avatar" id="userAvatar">A</div></div>
+      </header>
+      <section class="content" id="content">
+        <div class="login-card" id="loginPanel">
+          <div class="login-icon">P</div>
+          <h2 id="authTitle">Welcome back</h2>
+          <p id="authDescription">Sign in to your business workspace</p>
+          <form id="authForm">
+            <div id="companyFields" hidden>
+              <label class="form-label" for="companyName">Company name</label>
+              <input class="form-control mb-3" type="text" id="companyName" maxlength="180" autocomplete="organization">
+              <label class="form-label" for="ownerName">Your name</label>
+              <input class="form-control mb-3" type="text" id="ownerName" maxlength="160" autocomplete="name">
+            </div>
+            <label class="form-label" for="email">Email address</label>
+            <input class="form-control mb-3" type="email" id="email" required maxlength="180" autocomplete="email" placeholder="you@company.com">
+            <label class="form-label" for="password">Password</label>
+            <input class="form-control mb-3" type="password" id="password" required autocomplete="current-password" placeholder="Enter password">
+            <small class="password-hint" id="passwordHint" hidden>Use at least 12 characters with uppercase, lowercase, and a number.</small>
+            <button class="btn btn-primary w-100" id="authSubmit">Sign in</button>
+            <div id="loginError" class="text-danger small mt-3" role="alert"></div>
+          </form>
+          <div class="auth-switch"><span id="authSwitchText">New to Phoenix?</span> <button type="button" class="btn btn-link btn-sm p-0" id="authToggle">Create a company account</button></div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="/js/app.js"></script>
+</body>
+</html>
