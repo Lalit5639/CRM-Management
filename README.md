@@ -36,10 +36,15 @@ The root `index.html` is a landing page that links to the app in `frontend/`. Th
 
 ### Deploy on Render
 
-1. Sign in to Render and create a Blueprint from this repository's `main` branch.
-2. Review the resources before confirming creation: the web service uses Render's Free plan, and PostgreSQL uses the persistent `0.1c-256mb` plan (listed at $6 USD/month, before any applicable taxes or usage charges).
-3. Confirm the Blueprint to create the service and database. Render generates `JWT_SECRET`, connects the app to PostgreSQL, applies the schema at startup, and deploys future commits automatically.
-4. Open the web service's `onrender.com` URL. The Free web service sleeps after 15 minutes without traffic and can take about a minute to wake; the paid database does not have the 30-day expiration of Render's Free Postgres plan.
+This setup uses Render's Free web service and Neon Free PostgreSQL, so it does not create a paid Render database. Neon Free has usage limits (including 100 compute-hours and 1 GB storage per project); its compute scales to zero after inactivity, so the first database request may be slower.
+
+1. Create a Neon Free project and database, then copy its pooled connection string from the Neon Console's **Connect** dialog. Keep the string private.
+2. In Render, create a Blueprint from this repository's `main` branch and select `render.yaml`.
+3. Set `DATABASE_URL` to the Neon connection string in Render's environment-variable prompt or the service's **Environment** settings. Keep the generated `JWT_SECRET` private as well.
+4. Confirm the Blueprint. The app applies the schema at startup and future commits deploy automatically.
+5. Open the web service's `onrender.com` URL. Render's Free web service sleeps after 15 minutes without traffic and can take about a minute to wake.
+
+Free plans have provider-specific limits and may change; review the current [Neon Free plan](https://neon.com/pricing) and [Render Free plan](https://render.com/docs/free) terms before relying on them for business data.
 
 Passwords need at least 12 characters with uppercase, lowercase, and a number. GST invoices require both the company's GST state and the party state; same-state supplies split GST equally into CGST/SGST, and other-state supplies use IGST. Product GST percentages are used as line defaults and can be overridden on entries.
 
