@@ -30,6 +30,10 @@ A Node.js, Express, PostgreSQL, and HTML/CSS/JavaScript multi-company CRM and tr
 6. Select **Create a company account**. Signup creates the company, owner, Owner role, membership, and Main Warehouse atomically.
 7. In **Settings & Users**, set the company's legal name, GSTIN, GST state, registered status, contact information, and address before issuing GST invoices.
 
+## Deployment
+
+The root `index.html` is a landing page that links to the app in `frontend/`. The complete CRM also needs the Express API and PostgreSQL database, so static hosting such as GitHub Pages can display the frontend but cannot provide sign-in or save business data. Deploy the Node.js app with a PostgreSQL database for a fully working application; the Express server serves the app at `/`.
+
 Passwords need at least 12 characters with uppercase, lowercase, and a number. GST invoices require both the company's GST state and the party state; same-state supplies split GST equally into CGST/SGST, and other-state supplies use IGST. Product GST percentages are used as line defaults and can be overridden on entries.
 
 ## Main API groups
