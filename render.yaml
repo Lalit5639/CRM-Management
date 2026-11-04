@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: phoenix-business-suite
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: npm ci
+    startCommand: npm run db:migrate && npm start
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: phoenix-business-suite-db
+          property: connectionString
+
+databases:
+  - name: phoenix-business-suite-db
+    databaseName: phoenix_business_suite
+    plan: 0.1c-256mb
+    region: singapore

@@ -34,6 +34,13 @@ A Node.js, Express, PostgreSQL, and HTML/CSS/JavaScript multi-company CRM and tr
 
 The root `index.html` is a landing page that links to the app in `frontend/`. The complete CRM also needs the Express API and PostgreSQL database, so static hosting such as GitHub Pages can display the frontend but cannot provide sign-in or save business data. Deploy the Node.js app with a PostgreSQL database for a fully working application; the Express server serves the app at `/`.
 
+### Deploy on Render
+
+1. Sign in to Render and create a Blueprint from this repository's `main` branch.
+2. Review the resources before confirming creation: the web service uses Render's Free plan, and PostgreSQL uses the persistent `0.1c-256mb` plan (listed at $6 USD/month, before any applicable taxes or usage charges).
+3. Confirm the Blueprint to create the service and database. Render generates `JWT_SECRET`, connects the app to PostgreSQL, applies the schema at startup, and deploys future commits automatically.
+4. Open the web service's `onrender.com` URL. The Free web service sleeps after 15 minutes without traffic and can take about a minute to wake; the paid database does not have the 30-day expiration of Render's Free Postgres plan.
+
 Passwords need at least 12 characters with uppercase, lowercase, and a number. GST invoices require both the company's GST state and the party state; same-state supplies split GST equally into CGST/SGST, and other-state supplies use IGST. Product GST percentages are used as line defaults and can be overridden on entries.
 
 ## Main API groups
